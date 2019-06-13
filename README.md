@@ -9,7 +9,7 @@
 <br>
 
 
-### Note: do check whl as per operating system. This repo has only 32 bit version
+### Note: do check whl as per operating system. This repo has both 32 bit version and 64 bit version
 
 <br>
 
