@@ -3,7 +3,6 @@ import speech_recognition as sr
 from os import path
 from pprint import pprint
 
-#api key=440a3e9fde785d6b5aa4bd1595052891
 
 
 
