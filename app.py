@@ -29,7 +29,7 @@ def recognizerWithMicrophone():
 
 
 def recognizerWithAudioFile():
-    audio_file=path.join(path.dirname(path.realpath(__file__)),"test.wav")
+    audio_file=path.join(path.dirname(path.realpath(__file__)),"test2.wav")
     r=sr.Recognizer()
     with sr.AudioFile(audio_file) as source:
         audio=r.record(source)
@@ -37,10 +37,20 @@ def recognizerWithAudioFile():
     try:
         output=r.recognize_google(audio)#show all = true will show all possibilites of how google translates this audio to text
         #print("Over")
+
+        #sending output to punctuator api using post request
+        url_punctuator="http://bark.phon.ioc.ee/punctuator"
+        data={'text':'{}'.format(output)}
+        response_from_punctuator=requests.request("POST",url_punctuator,data=data)
+        print("text returned from punctuator api:",response_from_punctuator.text)
+        punctuated_text=response_from_punctuator.text
         
+
+
+        #sending the punctuated text to meaningcloud api using the api key
         url = "https://api.meaningcloud.com/summarization-1.0"
 
-        payload = "key=440a3e9fde785d6b5aa4bd1595052891&txt={}&url=&doc=&sentences=3".format(output)
+        payload = "key=440a3e9fde785d6b5aa4bd1595052891&txt={}&url=&doc=&sentences=3".format(punctuated_text)
         headers = {'content-type': 'application/x-www-form-urlencoded'}
         #application/x-www-form-urlencoded
 
@@ -48,10 +58,13 @@ def recognizerWithAudioFile():
         #headers=headers
 
    
-    
-        pprint(response.json()['summary'])
+        #printing json object
+        print("text returned from meaning cloud api:",response.json()['summary'])
+        text=response.json()['summary']
+
         
-        pprint(output)
+        
+       # pprint("original output:",output)
 
         #output also shows the accuracy of its conversion...check key confidence and transcript in output means the difference conversions of the audio file
         
