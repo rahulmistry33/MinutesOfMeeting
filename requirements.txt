@@ -1,4 +1,13 @@
+certifi==2019.3.9
+chardet==3.0.4
+Click==7.0
+Flask==1.0.3
+idna==2.8
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
 PyAudio==0.2.11
+requests==2.22.0
 SpeechRecognition==3.8.1
-PyAudio-0.2.11-cp37-cp37m-win32.whl
-requests
+urllib3==1.25.3
+Werkzeug==0.15.4
