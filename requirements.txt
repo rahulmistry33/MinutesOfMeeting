@@ -11,3 +11,4 @@ requests==2.22.0
 SpeechRecognition==3.8.1
 urllib3==1.25.3
 Werkzeug==0.15.4
+PyAudio-0.2.11-cp36-cp36m-win32.whl
