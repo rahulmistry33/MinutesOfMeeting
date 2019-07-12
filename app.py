@@ -2,9 +2,11 @@ import requests
 import speech_recognition as sr 
 from os import path,chdir,getcwd
 from pprint import pprint
+import json
 
 
-
+with open("config.json","r") as c:
+    params=json.load(c)["params"]
 class MomGenerator:
     def recognizerWithMicrophone():
 
@@ -29,10 +31,10 @@ class MomGenerator:
 
     def recognizerWithAudioFile(fname):
         
-        chdir(r"static\uploads")
-        audio_file=path.join(path.dirname(path.realpath(__file__)),"{}".format(fname))
+        '''chdir(r"static/uploads")
+        audio_file=path.join(path.dirname(path.realpath(__file__)),"{}".format(fname))'''
         r=sr.Recognizer()
-        with sr.AudioFile(audio_file) as source:
+        with sr.AudioFile(r"C:\Users\admin\Desktop\MinutesOfMeeting\static\uploads\{}".format(fname)) as source:
             audio=r.record(source)
 
         try:
@@ -45,23 +47,30 @@ class MomGenerator:
             response_from_punctuator=requests.request("POST",url_punctuator,data=data)
             #print("text returned from punctuator api:",response_from_punctuator.text)
             punctuated_text=response_from_punctuator.text
+            response = requests.get("https://api.aylien.com/api/v1/summarize?title='text'&text={}&sentences_number=10".format(punctuated_text),
+            headers={
+                "X-AYLIEN-TextAPI-Application-Key":"{}".format(params["aylien-api-key"]),
+                "X-AYLIEN-TextAPI-Application-ID":"{}".format(params["aylien-app-id"])
+            }
+            )
             
 
 
             #sending the punctuated text to meaningcloud api using the api key
-            url = "https://api.meaningcloud.com/summarization-1.0"
+            ''' url = "https://api.meaningcloud.com/summarization-1.0"
 
-            payload = "key=440a3e9fde785d6b5aa4bd1595052891&txt={}&url=&doc=&sentences=3".format(punctuated_text)
-            headers = {'content-type': 'application/x-www-form-urlencoded'}
-            #application/x-www-form-urlencoded
+                payload = "key=440a3e9fde785d6b5aa4bd1595052891&txt={}&url=&doc=&sentences=10".format(punctuated_text)
+                headers = {'content-type': 'application/x-www-form-urlencoded'}
+                #application/x-www-form-urlencoded
 
-            response = requests.request("POST", url, data=payload,headers=headers)
+                response = requests.request("POST", url, data=payload,headers=headers)'''
+                
             #headers=headers
 
     
             #printing json object
            # print("text returned from meaning cloud api:",response.json()['summary'])
-            text=response.json()['summary']
+            text=response.json()['sentences']
 
             
             
