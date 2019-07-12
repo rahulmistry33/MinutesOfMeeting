@@ -1,3 +1,5 @@
+#configuration 
+config.json
 #vscode 
 .vscode/
 # Byte-compiled / optimized / DLL files
