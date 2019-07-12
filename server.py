@@ -2,10 +2,15 @@ from flask import Flask,render_template,url_for,redirect,request,flash
 from werkzeug import secure_filename
 from app import MomGenerator as m
 import os
+import json 
+
+with open("config.json","r") as c:
+    params=json.load(c)["params"]
 
 #creating instance of Flask class
 app=Flask(__name__)
 app.config['SECRET_KEY']='0501d344495cc373a2a73670ca42ae80'
+app.config["UPLOAD_FOLDER"]=params["upload_location"]
 
 
 
@@ -28,7 +33,7 @@ def allowed_file(filename):
 @app.route("/",methods=['GET','POST'])
 def generate():
 
-    name=""
+    '''name=""
     text=""
     if request.method=="POST":
         if request.files:
@@ -42,9 +47,22 @@ def generate():
             name=audio.filename
             print("audio saved")
             #return redirect(request.url)
-        text=m.recognizerWithAudioFile(name)
+        text=m.recognizerWithAudioFile(name)'''
     
-    return render_template("generator.html",text=text)
+    return render_template("generator.html")
+
+@app.route("/uploader",methods=['GET','POST'])
+def uploader():
+    if request.method=="POST":
+            f = request.files['file']
+            f.save(os.path.join(app.config["UPLOAD_FOLDER"],secure_filename(f.filename)))
+            name=f.filename
+            print("audio saved")
+            text=m.recognizerWithAudioFile(name)
+            return render_template("generator.html",text=text)
+
+        
+        
 
 
    
