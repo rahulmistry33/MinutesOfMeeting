@@ -13,3 +13,12 @@
     width:80px;
     height:80px;
 }
+body{
+    background-color: #DDE1E8;
+}
+.page{
+    background-color: beige;
+}
+.agenda{
+    width:20px;
+}

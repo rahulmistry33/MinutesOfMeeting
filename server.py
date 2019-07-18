@@ -4,6 +4,7 @@ from app import MomGenerator as m
 import os
 import json 
 
+
 with open("config.json","r") as c:
     params=json.load(c)["params"]
 
@@ -11,6 +12,8 @@ with open("config.json","r") as c:
 app=Flask(__name__)
 app.config['SECRET_KEY']='0501d344495cc373a2a73670ca42ae80'
 app.config["UPLOAD_FOLDER"]=params["upload_location"]
+
+
 
 
 

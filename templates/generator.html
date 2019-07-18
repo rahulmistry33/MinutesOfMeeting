@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1 class="heading"> Minutes of Meeting Generator </h1>
-    <div class="container">
+    <div class="container page">
         
       <hr>
       <h1>Upload a file</h1>
@@ -9,6 +9,28 @@
           <input type="file" name="file">
           <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <br>
+
+      <form action="">
+          <p>Date: <input type="text" id="datepicker"></p>
+          <br>
+          <p>Agenda</p>
+          <div id="agenda-box">
+             
+
+          </div>
+        <br>
+          
+          <button id="add-agenda">Add more agendas</button>
+          <button id="delete-agenda">delete agenda</button>
+
+
+
+      </form>
+
+      
+      
+      
       <hr>
             
 
