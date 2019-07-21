@@ -7,7 +7,7 @@
       <h1>Upload a file</h1>
       <form action="/uploader" method="post" enctype="multipart/form-data">
           <input type="file" name="file">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
       <br>
 
@@ -15,14 +15,42 @@
           <p>Date: <input type="text" id="datepicker"></p>
           <br>
           <p>Agenda</p>
-          <div id="agenda-box">
-             
-
-          </div>
-        <br>
           
-          <button id="add-agenda">Add more agendas</button>
-          <button id="delete-agenda">delete agenda</button>
+
+          <div id='TextBoxesGroup'>
+            <div id="TextBoxDiv1">
+              <label>Agenda 1 : </label><input type='textbox' id='textbox1' >
+            </div>
+          </div>
+          <input type='button' value='Add Agenda' id='addButton'>
+          <input type='button' value='Remove Agenda' id='removeButton'>
+
+          <br>
+
+          <p>Members called for the meeting:</p>
+          <textarea class="form-control" id="members" rows="3"></textarea>
+
+
+        <br>
+        <p>Points/Issues discussed:</p>
+        <br>
+        <textarea class="form-control" id="points" rows="5">
+              
+                {% for sentences in text %}
+                  
+                    {{loop.index}} {{sentences}}
+                  
+                {% endfor %}
+            
+
+
+        </textarea>
+
+
+
+
+          
+          
 
 
 
@@ -35,16 +63,7 @@
             
 
         </div>
-        <div class="container">
-
-          <ul>
-              {% for sentences in text %}
-                <li>{{sentences}}</li>
-                
-              {% endfor %}
-          </ul>
-          
-        </div>
+        
         
         
     </div>
