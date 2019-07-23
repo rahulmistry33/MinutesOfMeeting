@@ -4,22 +4,30 @@
     <div class="container page">
         
       <hr>
+      
+      <br>
       <h1>Upload a file</h1>
       <form action="/uploader" method="post" enctype="multipart/form-data">
-          <input type="file" name="file">
-          <button type="submit" class="btn btn-primary" >Submit</button>
-      </form>
-      <br>
+        <input type="file" name="file">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </form>
+      <form action="{{url_for('generate')}}" method="post">
+        <br>
 
-      <form action="">
-          <p>Date: <input type="text" id="datepicker"></p>
+          <p>Date: <input type="text" id="datepicker" name="date"></p>
+          <br>
+          <p>Venue:<input type="text" id="venue" name="venue"></p>
+          <br>
+          <p>Time:<input type="text" id="time" name="time"></p>
+          <br>
+          <p>Meeting Called by:<input type="text" id="calledby" name="calledby"></p>
           <br>
           <p>Agenda</p>
           
 
           <div id='TextBoxesGroup'>
             <div id="TextBoxDiv1">
-              <label>Agenda 1 : </label><input type='textbox' id='textbox1' >
+              <label>Agenda 1 : </label><input type='textbox' id='textbox1' name="textbox1" >
             </div>
           </div>
           <input type='button' value='Add Agenda' id='addButton'>
@@ -28,33 +36,25 @@
           <br>
 
           <p>Members called for the meeting:</p>
-          <textarea class="form-control" id="members" rows="3"></textarea>
+          <textarea class="form-control" id="members" name="members" rows="3"></textarea>
 
 
         <br>
         <p>Points/Issues discussed:</p>
         <br>
-        <textarea class="form-control" id="points" rows="5">
-              
-                {% for sentences in text %}
-                  
-                    {{loop.index}} {{sentences}}
-                  
-                {% endfor %}
-            
 
-
+        <textarea class="form-control" id="points" name ="points" rows="5">
+              {% for sentences in text %}
+                  {{loop.index}} {{sentences}}
+              {% endfor %}
         </textarea>
-
-
-
-
-          
-          
-
-
-
+        
+      
+      <br>
+      <button type="submit" class="btn btn-primary">Preview PDF</button>
       </form>
+      
+      
 
       
       
