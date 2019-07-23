@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h2><strong>K.J Somaiya College of Engineering,Mumbai-77</strong></h2>
+        <br>
+        (Autonomous College Affiliated to University of Mumbai)
+        <br>
+        <h2><strong>Minutes of Meeting(MOM)</strong></h2>
+        <br>
+    
+    </header>
+    <div class="calledby">
+        <p>Meeting called by {{called_by}} on {{date}} at {{time}} Venue {{venue}}</p>
+    </div>
+    <div class="agenda">
+        <u>Agenda:</u>
+        <br>
+        <ul>
+        {%for elements in arr%}
+            {%if elements==none%}
+                {{pass}}
+            {%else%}
+            <li>{{elements}}</li>  
+            
+            {%endif%}
+        {%endfor%}
+        </ul>
+    </div>
+    <br>
+    <div class="members">
+        <p>Members called for the meeting:{{members}}</p>
+    </div>
+    <br>
+    <div class="points">
+        <h2><strong>Points/Issues Discussed:</strong></h2>
+        <ul>
+            {%for point in points%}
+             <li>{{point}}</li>   
+             {%endfor%}
+             
+        </ul>
+
+    </div>
+</body>
+</html>
+
