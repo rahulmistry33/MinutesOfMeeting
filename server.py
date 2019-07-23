@@ -44,7 +44,7 @@ def generate():
             
         members=request.form.get('members')
         points=request.form.get('points')
-        points_array=points.split()
+        points_array=points.split('# ')
         venue=request.form.get('venue')
         called_by=request.form.get('calledby')
         time=request.form.get('time')
