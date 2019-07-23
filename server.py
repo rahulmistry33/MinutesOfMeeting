@@ -35,6 +35,23 @@ def allowed_file(filename):
 
 @app.route("/",methods=['GET','POST'])
 def generate():
+    if request.method=="POST":
+        date=request.form.get('date')
+        arr=[]
+        for i in range(10):
+            
+            arr.append(request.form.get("textbox{}".format(i)))
+            
+        members=request.form.get('members')
+        points=request.form.get('points')
+        points_array=points.split()
+        venue=request.form.get('venue')
+        called_by=request.form.get('calledby')
+        time=request.form.get('time')
+        return render_template("pdf.html",date=date,arr=arr,members=members,points=points_array,venue=venue,called_by=called_by,time=time)
+    return render_template("generator.html")
+
+   
 
     '''name=""
     text=""
@@ -63,6 +80,26 @@ def uploader():
             print("audio saved")
             text=m.recognizerWithAudioFile(name)
             return render_template("generator.html",text=text)
+
+'''@app.route("/form",methods=['GET','POST'])
+def form():
+    if request.method=="POST":
+        date=request.args.get('date')
+        arr=[]
+        for i in range(10):
+            if request.args.get("textbox{}".format(i)):
+                arr.append(request.args.get("textbox{}".format(i)))
+            else:
+                break
+        members=request.args.get('members')
+        points=request.args.get('points')
+        return render_template("pdf.html",date=date,arr=arr,members=members,points=points)'''
+        
+        
+        
+
+
+
 
         
         
