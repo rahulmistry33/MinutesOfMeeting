@@ -3,18 +3,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link  rel="stylesheet" href="{{url_for('static',filename='pdf.css')}}" type="text/css">
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <h2><strong>K.J Somaiya College of Engineering,Mumbai-77</strong></h2>
-        <br>
-        (Autonomous College Affiliated to University of Mumbai)
-        <br>
-        <h2><strong>Minutes of Meeting(MOM)</strong></h2>
-        <br>
     
-    </header>
+    <div class="header">
+        <p><h2><strong>K.J Somaiya College of Engineering,Mumbai-77</strong></h2></p>
+        
+        <p>(Autonomous College Affiliated to University of Mumbai)</p>
+        
+        <p><h2><strong>Minutes of Meeting(MOM)</strong></h2></p>
+        
+    
+    </div>
+    <div class="container">
     <div class="calledby">
         <p>Meeting called by {{called_by}} on {{date}} at {{time}} Venue {{venue}}</p>
     </div>
@@ -43,10 +46,11 @@
             {%for point in points%}
              <li>{{point}}</li>   
              {%endfor%}
-             
+
         </ul>
 
     </div>
+</div>
 </body>
 </html>
 
