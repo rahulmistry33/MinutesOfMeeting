@@ -1,8 +1,9 @@
-from flask import Flask,render_template,url_for,redirect,request,flash
+from flask import Flask,render_template,url_for,redirect,request,flash,make_response
 from werkzeug import secure_filename
 from app import MomGenerator as m
 import os
 import json 
+import pdfkit 
 
 
 with open("config.json","r") as c:
@@ -48,7 +49,16 @@ def generate():
         venue=request.form.get('venue')
         called_by=request.form.get('calledby')
         time=request.form.get('time')
-        return render_template("pdf.html",date=date,arr=arr,members=members,points=points_array,venue=venue,called_by=called_by,time=time)
+        render= render_template("pdf.html",date=date,arr=arr,members=members,points=points_array,venue=venue,called_by=called_by,time=time)
+        config = pdfkit.configuration(wkhtmltopdf=r'C:\Users\admin\Desktop\wkhtmltox-0.12.5-1.mxe-cross-win32\wkhtmltox\bin\wkhtmltopdf.exe')
+
+        pdf=pdfkit.from_string(render,False,configuration=config)
+
+        response = make_response(pdf)
+        response.headers['Content-Type']='application/pdf'
+        response.headers['Content-Disposition']='inline;filename=mom.pdf'
+        return response
+
     return render_template("generator.html")
 
    
