@@ -1,9 +1,14 @@
 from flask import Flask,render_template,url_for,redirect,request,flash,make_response
+from flask_dance.contrib.google import make_google_blueprint,google
+
 from werkzeug import secure_filename
+
+
 from app import MomGenerator as m
 import os
 import json 
 import pdfkit 
+
 
 
 with open("config.json","r") as c:
@@ -18,12 +23,13 @@ app.config["UPLOAD_FOLDER"]=params["upload_location"]
 
 
 
+
 '''@app.route("/")
 def call():
     val=m.recognizerWithAudioFile()
     return "{}".format(val)'''
 
-app.config["UPLOAD_AUDIO"]=r"static\uploads"
+app.config["UPLOAD_AUDIO"]=r"static/uploads"
 app.config["ALLOWED_EXTENSIONS"]=["wav"]
 
 def allowed_file(filename):
@@ -34,6 +40,10 @@ def allowed_file(filename):
         return False
 
 
+
+
+
+    
 @app.route("/",methods=['GET','POST'])
 def generate():
     if request.method=="POST":
@@ -88,6 +98,7 @@ def uploader():
             f.save(os.path.join(app.config["UPLOAD_FOLDER"],secure_filename(f.filename)))
             name=f.filename
             print("audio saved")
+            
             text=m.recognizerWithAudioFile(name)
             return render_template("generator.html",text=text)
 
