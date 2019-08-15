@@ -22,3 +22,39 @@ body{
 .agenda{
     width:20px;
 }
+.venue{
+    position: relative;
+    left:630px;
+    top:-73px;
+
+}
+.time{
+    position: relative;
+    left:630px;
+    top:-73px;
+
+}
+.calledby{
+    position: relative;
+    top:-140px;
+}
+
+.agenda-text{
+    position: relative;
+    top:-100px;
+}
+.boxes{
+    position: relative;
+    top:-100px;
+}
+.add-remove{
+    position: relative;
+    top:-100px;
+}
+.members{
+    position: relative;
+    top:-100px;
+}
+
+
+
