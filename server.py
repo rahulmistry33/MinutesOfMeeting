@@ -43,8 +43,11 @@ def allowed_file(filename):
 
 
 
-    
-@app.route("/",methods=['GET','POST'])
+
+@app.route('/')
+def index():
+    return render_template('landing.html')
+@app.route("/generate",methods=['GET','POST'])
 def generate():
     if request.method=="POST":
         date=request.form.get('date')
@@ -60,7 +63,8 @@ def generate():
         called_by=request.form.get('calledby')
         time=request.form.get('time')
         render= render_template("pdf.html",date=date,arr=arr,members=members,points=points_array,venue=venue,called_by=called_by,time=time)
-        config = pdfkit.configuration(wkhtmltopdf=r'C:\Users\admin\Desktop\wkhtmltox-0.12.5-1.mxe-cross-win32\wkhtmltox\bin\wkhtmltopdf.exe')
+        #config = pdfkit.configuration(wkhtmltopdf=r'C:\Users\admin\Desktop\wkhtmltox-0.12.5-1.mxe-cross-win32\wkhtmltox\bin\wkhtmltopdf.exe')
+        config = pdfkit.configuration(wkhtmltopdf=r'Dependencies\wkhtmltopdf.exe')
 
         pdf=pdfkit.from_string(render,False,configuration=config)
 
