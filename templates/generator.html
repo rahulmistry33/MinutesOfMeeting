@@ -1,64 +1,55 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1 class="heading"> Minutes of Meeting Generator </h1>
+    <h1 class="heading">Create Template</h1>
     <div class="container page">
         
       <hr>
       
       <br>
-      <h1>Upload a file</h1>
+      <h3>Upload an audio file</h3>
       <form action="/uploader" method="post" enctype="multipart/form-data">
         <input type="file" name="file">
         <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
       <form action="{{url_for('generate')}}" method="post">
         <br>
-
-          <p>Date: <input type="text" id="datepicker" name="date"></p>
-          <br>
-          <p>Venue:<input type="text" id="venue" name="venue"></p>
-          <br>
-          <p>Time:<input type="text" id="time" name="time"></p>
-          <br>
-          <p>Meeting Called by:<input type="text" id="calledby" name="calledby"></p>
-          <br>
-          <p>Agenda</p>
-          
-
-          <div id='TextBoxesGroup'>
-            <div id="TextBoxDiv1">
-              <label>Agenda 1 : </label><input type='textbox' id='textbox1' name="textbox1" >
-            </div>
-          </div>
-          <input type='button' value='Add Agenda' id='addButton'>
-          <input type='button' value='Remove Agenda' id='removeButton'>
-
-          <br>
-
-          <p>Members called for the meeting:</p>
-          <textarea class="form-control" id="members" name="members" rows="3"></textarea>
-
-
-        <br>
-        <p>Points/Issues discussed:</p>
-        <br>
-
+        <p>Edit Points/Issues Discussed</p>
         <textarea class="form-control" id="points" name ="points" rows="5">
               {% for sentences in text %}
                   # {{sentences}}
               {% endfor %}
         </textarea>
-        
-      
+        <br>
+
+          <p>Date: <input type="text" id="datepicker" name="date"></p>
+          <br>
+          <p class="venue">Venue: <input type="text" id="venue" name="venue"></p>
+          <br>
+          <p class="time">Time:   <input type="text" id="time" name="time"></p>
+          <br>
+          <p class="calledby">Meeting Called by: <input type="text" id="calledby" name="calledby"></p>
+          <br>
+          
+          <p class="agenda-text">Agenda</p>
+          
+
+          <div id='TextBoxesGroup' class="boxes">
+            <div id="TextBoxDiv1">
+              <label>Agenda 1 : </label> <input type='textbox' id='textbox1' name="textbox1" >
+            </div>
+          </div>
+          <div class="add-remove">
+          <input type='button' value='Add Agenda' id='addButton'>
+          <input type='button' value='Remove Agenda' id='removeButton'>
+          </div>
+          <br>
+          <div class="members">
+          <p>Members called for the meeting:</p>
+          <textarea class="form-control" id="members" name="members" rows="3"></textarea>
+        </div>
       <br>
       <button type="submit" class="btn btn-primary">Preview PDF</button>
       </form>
-      
-      
-
-      
-      
-      
       <hr>
             
 
