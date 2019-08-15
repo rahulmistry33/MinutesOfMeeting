@@ -1,0 +1,43 @@
+.main_logo{
+    border-radius: 50%;
+    width:80px;
+    height:80px;
+    margin-left:10px;
+
+}
+.brand{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    font-size: 40px;
+    margin-left: 400px;
+    top:-100px;
+}
+header{
+    position: relative;
+    margin-left:40px;
+    top:20px;
+    
+}
+.jumbotron{
+    height:450px;
+    
+    background-image: 
+    linear-gradient(
+        rgba(211, 198, 198, 0),
+        rgba(95, 88, 88, 0)
+    ),
+    url("images/notes.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: alpha(opacity=100);
+
+}
+.sides{
+    position: relative;
+    left:700px;
+    top:-120px;
+}
+.copyright{
+    position: relative;
+    left:400px;
+}
