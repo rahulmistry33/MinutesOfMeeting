@@ -9,6 +9,9 @@ import os
 import json 
 import pdfkit 
 
+os.environ['OAUTHLIB_INSECURE_TRANSPORT']='1'
+os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE']='1'
+
 
 
 with open("config.json","r") as c:
@@ -21,8 +24,9 @@ app.config["UPLOAD_FOLDER"]=params["upload_location"]
 
 
 
+blueprint=make_google_blueprint(client_id='796763710919-kljkmv43rbf5920v7ae5n37ktsnp3nab.apps.googleusercontent.com',client_secret='AfbN_kcpO13DT22Lft95IqXx',offline=True,scope=['profile','email'],redirect_url='http://127.0.0.1:5000/login/generate')
 
-
+app.register_blueprint(blueprint,url_prefix='/login')
 
 '''@app.route("/")
 def call():
@@ -47,7 +51,21 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     return render_template('landing.html')
-@app.route("/generate",methods=['GET','POST'])
+
+
+
+@app.route('/login/google')
+def login(google):
+    if not google.authorized:
+        return render_template(url_for('google.login'))
+    else:
+        resp= google.get('/oauth2/v2/userinfo')
+        assert resp.ok,resp.text
+        email= resp.json()['email']
+        return render_template(url_for('/login/generate'))
+
+
+@app.route("/login/generate",methods=['GET','POST'])
 def generate():
     if request.method=="POST":
         date=request.form.get('date')
@@ -95,7 +113,7 @@ def generate():
     
     return render_template("generator.html")
 
-@app.route("/uploader",methods=['GET','POST'])
+@app.route("/login/uploader",methods=['GET','POST'])
 def uploader():
     if request.method=="POST":
             f = request.files['file']
