@@ -16,7 +16,13 @@
 ## Features 
 - [x] Conversion from Speech to text using audio file as an input.
 - [x] Automated minutes generator based on text analysis.
-- [x] Pa
+
+## Enhancements 
+- Optimising algorithm to parse audio files faster and breaking into chunks of larger size.
+- Improving CSS.
+
+
+
 
 ## Install dependencies
 
