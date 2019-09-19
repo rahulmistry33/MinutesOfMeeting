@@ -8,6 +8,7 @@
  
 </div>
 ---------------
+
 >Good meeting minutes help drive a plan of action for your leadership team and employees. They clarify how, when, why, and by whom decisions were made. They map out a plan for the action items (which helps get the work done) and they later provide valuable information to those team members who aren’t able to attend the meeting.
 
 ## Install dependencies
