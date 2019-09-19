@@ -31,14 +31,14 @@
 
 # Start server using:
 
-<br>
+
+
 ``` python server.py ```
-<br>
 
 <a href="127.0.0.1/5000">127.0.0.1/5000</a>
 
 ### Contributing
-This repo is open to `enhancements` & `bug-fixes` :smile:
+This repository is open to `enhancements` & `bug-fixes` :smile:
 
 # Note:
 This project was developed during my internship at SDC,KJSCE under the guidelines of  Prof. Suchita Patil.
