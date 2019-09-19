@@ -1,4 +1,10 @@
-# MinutesOfMeeting
+<div align="center">
+  
+ # MinutesOfMeeting
+ 
+ [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+ 
+</div>
 
 ## Install dependencies
 
@@ -26,3 +32,5 @@
 <br>
 
 <a href="127.0.0.1/5000">127.0.0.1/5000</a>
+
+
