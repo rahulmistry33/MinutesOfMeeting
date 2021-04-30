@@ -29,7 +29,7 @@ requests-oauthlib==1.2.0
 six==1.11.0
 SpeechRecognition==3.8.1
 SQLAlchemy==1.2.6
-urllib3==1.25.3
+urllib3==1.25.8
 URLObject==2.4.3
 Werkzeug==0.15.4
 wincertstore==0.2
